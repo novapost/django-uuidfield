@@ -1,4 +1,5 @@
 import uuid
+import six
 
 from django import forms
 from django.db.models import Field, SubfieldBase
@@ -116,7 +117,7 @@ class UUIDField(Field):
         """
         if isinstance(value, uuid.UUID):
             value = str(value)
-        if isinstance(value, basestring):
+        if isinstance(value, six.string_types):
             if '-' in value:
                 value = value.replace('-', '')
         return value
